@@ -1,0 +1,153 @@
+package university;
+
+/**
+ * This class represents a university education system.
+ * 
+ * It manages students and courses.
+ *
+ */
+public class University {
+	private String name;
+	private String rectorFName,rectorLName;
+	
+	private Student[] students =new Student[1000];
+	private int sidbegin = 10000;
+	private int senrolled = 0;
+	
+	private class Course {
+		private int id;
+		private String cname;
+		private String tname;
+		
+		public Course(int cid, String cname, String tname) {
+			this.id = cid;
+			this.cname = cname;
+			this.tname = tname;
+		}
+		
+		public String describe() {
+			return id+","+cname+","+tname;
+		}
+		
+		
+	}
+	private int cidbegin = 10;
+	private int cactivated = 0;
+	private Course[] courses = new Course[50];
+	
+	/**
+	 * Constructor
+	 * @param name name of the university
+	 */
+	public University(String name){
+		this.name = name;
+	}
+	
+	/**
+	 * Getter for the name of the university
+	 * @return name of university
+	 */
+	public String getName(){
+		return name;
+	}
+	
+	/**
+	 * Defines the rector for the university
+	 * 
+	 * @param first
+	 * @param last
+	 */
+	public void setRector(String first, String last){
+		rectorFName=first;
+		rectorLName=last;
+	}
+	
+	/**
+	 * Retrieves the rector of the university
+	 * 
+	 * @return
+	 */
+	public String getRector(){
+		return rectorFName + " "+ rectorLName;
+	}
+	
+	/**
+	 * Enroll a student in the university
+	 * 
+	 * @param first first name of the student
+	 * @param last last name of the student
+	 * @return
+	 */
+	public int enroll(String first, String last){
+		senrolled+=1;
+		int studentid = sidbegin+senrolled;
+		students[senrolled-1]=new Student(studentid,first,last);
+		return studentid;
+	}
+	
+	/**
+	 * Retrieves the information for a given student
+	 * 
+	 * @param id the id of the student
+	 * @return information about the student
+	 */
+	public String student(int id){
+		return students[id-sidbegin-1].describe();
+	}
+	
+	/**
+	 * Activates a new course with the given teacher
+	 * 
+	 * @param title title of the course
+	 * @param teacher name of the teacher
+	 * @return the unique code assigned to the course
+	 */
+	public int activate(String title, String teacher){
+		//TODO: to be implemented
+		cactivated+=1;
+		int cid = cidbegin+cactivated;
+		courses[cactivated-1]=new Course(cid,title,teacher);
+		return cid;
+	}
+	
+	/**
+	 * Retrieve the information for a given course
+	 * 
+	 * @param code unique code of the course
+	 * @return information about the course
+	 */
+	public String course(int code){
+		return courses[code-cidbegin-1].describe();
+	}
+	
+	/**
+	 * Register a student to attend a course
+	 * @param studentID id of the student
+	 * @param courseCode id of the course
+	 */
+	public void register(int studentID, int courseCode){
+		//TODO: to be implemented
+	}
+	
+	/**
+	 * Retrieve a list of attendees
+	 * 
+	 * @param courseCode unique id of the course
+	 * @return list of attendees separated by "\n"
+	 */
+	public String listAttendees(int courseCode){
+		//TODO: to be implemented
+		return null;
+	}
+
+	/**
+	 * Retrieves the study plan for a student
+	 * 
+	 * @param studentID id of the student
+	 * @return list of courses the student is registered for
+	 */
+	public String studyPlan(int studentID){
+		//TODO: to be implemented
+		return null;
+	}
+}
